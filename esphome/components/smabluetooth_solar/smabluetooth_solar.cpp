@@ -184,9 +184,10 @@ void SmaBluetoothSolar::loop() {
     break;
 
     case SmaInverterState::DoneReadingValues: {
-      // continuously read values
-      inverterState = SmaInverterState::SignalStrength;
-      waitMillis = 500;
+      // disconnect 35 s between read values
+      smaInverter->disconnect();
+      inverterState = SmaInverterState::Logon;
+      waitMillis = 130*1000;
     }
     break;
   }
