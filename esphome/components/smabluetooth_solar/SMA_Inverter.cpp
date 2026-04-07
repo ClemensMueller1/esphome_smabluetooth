@@ -54,8 +54,8 @@ void ESP32_SMA_Inverter::setup(std::string mac, std::string pw) {
 bool ESP32_SMA_Inverter::begin(String localName, bool isMaster) {
     ESP_LOGD(TAG, "serialBT begin %s ", localName.c_str());
     boolean bOk = false;
-    bOk &= serialBT.setPin(&btPin[0], 4); 
-    bOk = serialBT.begin(localName, isMaster);   // "true" creates this device as a BT Master.
+    bOk = serialBT.setPin(&btPin[0], 4); 
+    bOk &= serialBT.begin(localName, isMaster);   // "true" creates this device as a BT Master.
     return bOk;
 }
 
