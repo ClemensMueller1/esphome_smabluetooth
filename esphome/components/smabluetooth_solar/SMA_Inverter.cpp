@@ -22,8 +22,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include <Arduino.h>
-#include <string>
+//#include <Arduino.h>
+//#include <string>
 #include "SMA_Inverter.h"
 #include "esphome/core/application.h"
 
@@ -55,8 +55,12 @@ void ESP32_SMA_Inverter::setup(std::string mac, std::string pw) {
 bool ESP32_SMA_Inverter::begin(String localName, bool isMaster) {
     ESP_LOGD(TAG, "serialBT begin %s ", localName.c_str());
     boolean bOk = false;
-    bOk = serialBT.setPin(&btPin[0], 4); 
-    bOk &= serialBT.begin(localName, isMaster);   // "true" creates this device as a BT Master.
+    bOk = serialBT.begin(localName, isMaster);   // "true" creates this device as a BT Master.
+    bOk &= serialBT.setPin(&btPin[0], 4); 
+    if(bOk)
+      ESP_LOGD(TAG, "serialBT OK begin %s ", localName.c_str());
+    else
+      ESP_LOGD(TAG, "serialBT ERR begin %s ", localName.c_str());
     return bOk;
 }
 
