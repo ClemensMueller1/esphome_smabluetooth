@@ -314,6 +314,7 @@ void SmaBluetoothSolar::update() {
   updateSensor(pvs_[0].current_sensor_, String("IdcA"), smaInverter->dispData.Idc1);
   updateSensor(pvs_[0].active_power_sensor_, String("PDC"), smaInverter->invData.Pdc1);
   //todo add pvs_[1]
+  updateSensor(pvs_[1].active_power_sensor_, String("PDC"), smaInverter->invData.Pdc2);
   updateSensor(phases_[0].voltage_sensor_, String("UacA"), smaInverter->dispData.Uac1);
   updateSensor(phases_[0].current_sensor_, String("IacA"), smaInverter->dispData.Iac1);
   updateSensor(phases_[0].active_power_sensor_, String("IacA"), smaInverter->invData.Pac1);
